@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 
 const placeSchema = new mongoose.Schema({
-  id: Number,
   city: String,
   country: String,
   image_url: String,
