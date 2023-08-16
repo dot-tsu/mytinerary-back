@@ -26,7 +26,7 @@ export const createPlace = async (req, res) => {
       const newPlace = await Place.create(req.body);
       res.status(201).json(newPlace);
     } catch (error) {
-      res.status(400).json({ error: 'Error creating place' });
+      res.status(400).json({ error: 'Error creating place 😿' });
     }
   };
 
@@ -38,11 +38,11 @@ export const createPlace = async (req, res) => {
         { new: true }
       );
       if (!updatedPlace) {
-        return res.status(404).json({ message: 'Place not found' });
+        return res.status(404).json({ message: 'Place not found 😿' });
       }
       res.json(updatedPlace);
     } catch (error) {
-      res.status(400).json({ error: 'Error updating place' });
+      res.status(400).json({ error: 'Error updating place 😿' });
     }
   };
 
@@ -50,10 +50,10 @@ export const createPlace = async (req, res) => {
     try {
       const deletedPlace = await Place.findOneAndDelete({ _id: req.params.id });
       if (!deletedPlace) {
-        return res.status(404).json({ message: 'Place not found' });
+        return res.status(404).json({ message: 'Place not found 😿' });
       }
       res.json(deletedPlace);
     } catch (error) {
-      res.status(500).json({ error: 'Error deleting place' });
+      res.status(500).json({ error: 'Error deleting place 😿' });
     }
   };
