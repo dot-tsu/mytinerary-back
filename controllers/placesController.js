@@ -1,13 +1,16 @@
 import Place from '../models/Place.js';
 
+
 export const getAllPlaces = async (req, res) => {
   try {
-    const places = await Place.find();
+    const filter = req.query.query ? new RegExp(`^${req.query.query}`, 'i') : /^/; 
+    const places = await Place.find({ $or: [{ country: filter }, { city: filter }] });
     res.json(places);
   } catch (error) {
     res.status(500).json({ error: 'Error fetching places 😿' });
   }
 };
+
 
 export const getPlaceById = async (req, res) => {
   try {
