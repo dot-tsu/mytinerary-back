@@ -1,13 +1,16 @@
 import Place from '../models/Place.js';
 
+
 export const getAllPlaces = async (req, res) => {
   try {
-    const places = await Place.find();
+    const filter = req.query.query ? new RegExp(`^${req.query.query}`, 'i') : /^/; 
+    const places = await Place.find({ $or: [{ country: filter }, { city: filter }] });
     res.json(places);
   } catch (error) {
     res.status(500).json({ error: 'Error fetching places 😿' });
   }
 };
+
 
 export const getPlaceById = async (req, res) => {
   try {
@@ -26,7 +29,7 @@ export const createPlace = async (req, res) => {
       const newPlace = await Place.create(req.body);
       res.status(201).json(newPlace);
     } catch (error) {
-      res.status(400).json({ error: 'Error creating place' });
+      res.status(400).json({ error: 'Error creating place 😿' });
     }
   };
 
@@ -38,11 +41,11 @@ export const createPlace = async (req, res) => {
         { new: true }
       );
       if (!updatedPlace) {
-        return res.status(404).json({ message: 'Place not found' });
+        return res.status(404).json({ message: 'Place not found 😿' });
       }
       res.json(updatedPlace);
     } catch (error) {
-      res.status(400).json({ error: 'Error updating place' });
+      res.status(400).json({ error: 'Error updating place 😿' });
     }
   };
 
@@ -50,10 +53,10 @@ export const createPlace = async (req, res) => {
     try {
       const deletedPlace = await Place.findOneAndDelete({ _id: req.params.id });
       if (!deletedPlace) {
-        return res.status(404).json({ message: 'Place not found' });
+        return res.status(404).json({ message: 'Place not found 😿' });
       }
       res.json(deletedPlace);
     } catch (error) {
-      res.status(500).json({ error: 'Error deleting place' });
+      res.status(500).json({ error: 'Error deleting place 😿' });
     }
   };
