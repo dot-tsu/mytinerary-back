@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const itinerarySchema = new mongoose.Schema({
+  name: String,
   user: {
     name: String,
     profilePicture: String 
