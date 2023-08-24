@@ -1,23 +1,42 @@
 import mongoose from 'mongoose';
 
 const itinerarySchema = new mongoose.Schema({
-  name: String,
+  name: {
+    type: String,
+    required: true
+  },
   user: {
-    name: String,
-    profilePicture: String 
+    name: {
+      type: String,
+      required: true
+    },
+    profilePicture: {
+      type: String,
+      required: true
+    }
   },
   price: {
     type: Number,
     min: 1,
-    max: 5
+    max: 5,
+    required: true
   },
-  duration: Number,
+  duration: {
+    type: Number,
+    required: true
+  },
   likes: {
     type: Number,
-    default: 0
+    default: 0,
+    required: true
   },
   comments: [String],
-  hashtags: [String]
+  hashtags: [String],
+  place: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Place', 
+    required: true
+  }
 });
 
 const Itinerary = mongoose.model('Itinerary', itinerarySchema);

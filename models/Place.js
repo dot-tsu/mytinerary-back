@@ -1,11 +1,20 @@
 import mongoose from 'mongoose';
 
 const placeSchema = new mongoose.Schema({
-  city: String,
-  country: String,
+  city: {
+    type: String,
+    required: true
+  },
+  country: {
+    type: String,
+    required: true
+  },
   image_url: String,
   description: String,
-  isPopular: Boolean
+  isPopular: {
+    type: Boolean,
+    required: true
+  }
 });
 
 const Place = mongoose.model('Place', placeSchema);
