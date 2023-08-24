@@ -9,16 +9,19 @@ export const getAllItineraries = async (req, res) => {
     }
 };
 
-export const getItineraryByCity = async (req, res) => {
+export const getItinerariesByPlace = async (req, res) => {
     try {
-        const city = req.params.city; 
-        const itinerariesInCity = await Itinerary.find({
-            'place.city': city 
-        });
+        const placeId = req.params.placeId; 
+        const itinerariesInPlace = await Itinerary.find({ place: placeId });
 
-        res.json(itinerariesInCity);
+        if (itinerariesInPlace.length === 0) {
+            return res.status(404).json({ message: 'Itineraries not found for the given place 😿' });
+        }
+
+        res.json(itinerariesInPlace);
     } catch (error) {
-        res.status(500).json({ error: 'Error fetching itineraries by city 😿' });
+        console.error(error);
+        res.status(500).json({ error: 'Error fetching itineraries by place 😿' });
     }
 };
 
