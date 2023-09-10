@@ -3,7 +3,6 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import passport from 'passport';
 import session from 'express-session'; 
 
 import placeRoutes from './routes/places.js';
