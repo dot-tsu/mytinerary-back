@@ -1,7 +1,7 @@
 import User from '../models/User.js';
 import { generateToken } from '../jwt.js';
 import Joi from 'joi';
-import {verify } from '../helpers/google-verify.js/'
+import { verify } from '../helpers/google-verify.js'
 
 export async function loginUser(req, res) {
   try {
