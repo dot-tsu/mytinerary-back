@@ -25,7 +25,7 @@ export async function loginUser(req, res) {
 
     if (isMatch) {
       const token = generateToken(user);
-      return res.status(200).json({ message: 'Successful login 😼', token });
+      return res.status(200).json({ message: 'Successful login 😼', token, user });
     } else {
       return res.status(401).json({ message: 'Incorrect Password 😿' });
     }
