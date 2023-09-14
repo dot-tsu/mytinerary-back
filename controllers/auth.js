@@ -33,6 +33,7 @@ export async function createUser(req, res) {
       email: Joi.string().email().required(),
       password: Joi.string().min(6).required(),
       country: Joi.string().required(),
+      profilePicUrl: Joi.string().allow(''),
     });
 
     const { error } = schema.validate(req.body);
