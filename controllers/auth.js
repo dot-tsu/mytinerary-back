@@ -45,7 +45,7 @@ export async function createUser(req, res) {
     const existingUser = await User.findOne({ email: req.body.email });
 
     if (existingUser) {
-      return res.status(409).json({ error: 'That email has already been registered 😿' });
+      return res.status(409).json({ message: 'That email has already been registered 😿' });
     }
 
     const newUser = new User(req.body);
@@ -53,7 +53,7 @@ export async function createUser(req, res) {
 
     res.status(201).json(newUser);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(400).json({ message: error.message });
   }
 }
 
