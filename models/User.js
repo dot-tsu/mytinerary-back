@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
   },
   profilePicUrl: {
     type: String,
-    default: "defaultpfp.jpg", 
+    default: "https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg", 
   },
   country: {
     type: String,
